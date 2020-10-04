@@ -1,21 +1,26 @@
-import React, {useState} from 'react';
-import './App.css';
+import React, { useState } from "react";
+import "./App.css";
+import GuestList from "./GuestList";
 
-function App() {
+const App = () => {
   const [guests, setGuests] = useState([
     {
       name: "Paul",
-      isConfirmed: false
+      isConfirmed: false,
     },
     {
-      name: 'Mike',
-      isConfirmed: true
-    }
+      name: "Mike",
+      isConfirmed: true,
+    },
+    {
+      name: "Andrew",
+      isConfirmed: true,
+    },
   ]);
 
   const getTotalInvited = () => {
     return guests.length;
-  }
+  };
 
   // getAttendingGuests = () =>
   // getUnconfirmedGuests = () =>
@@ -26,8 +31,10 @@ function App() {
         <h1>RSVP</h1>
         <p>A Treehouse App</p>
         <form>
-            <input type="text" value="Safia" placeholder="Invite Someone" />
-            <button type="submit" name="submit" value="submit">Submit</button>
+          <input type="text" value="Safia" placeholder="Invite Someone" />
+          <button type="submit" name="submit" value="submit">
+            Submit
+          </button>
         </form>
       </header>
       <div className="main">
@@ -37,7 +44,7 @@ function App() {
             <input type="checkbox" /> Hide those who haven't responded
           </label>
         </div>
-        <table class="counter">
+        <table className="counter">
           <tbody>
             <tr>
               <td>Attending:</td>
@@ -53,35 +60,10 @@ function App() {
             </tr>
           </tbody>
         </table>
-        <ul>
-          <li className="pending"><span>Safia</span></li>
-          <li className="responded"><span>Iver</span>
-            <label>
-              <input type="checkbox" checked /> Confirmed
-            </label>
-            <button>edit</button>
-            <button>remove</button>
-          </li>
-          <li class="responded">
-            <span>Corrina</span>
-            <label>
-              <input type="checkbox" checked /> Confirmed
-            </label>
-            <button>edit</button>
-            <button>remove</button>
-          </li>
-          <li>
-            <span>Joel</span>
-            <label>
-              <input type="checkbox" /> Confirmed
-            </label>
-            <button>edit</button>
-            <button>remove</button>
-          </li>
-        </ul>
+        <GuestList guests={guests} />
       </div>
     </div>
   );
-}
+};
 
 export default App;
