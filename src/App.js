@@ -1,7 +1,25 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './App.css';
 
 function App() {
+  const [guests, setGuests] = useState([
+    {
+      name: "Paul",
+      isConfirmed: false
+    },
+    {
+      name: 'Mike',
+      isConfirmed: true
+    }
+  ]);
+
+  const getTotalInvited = () => {
+    return guests.length;
+  }
+
+  // getAttendingGuests = () =>
+  // getUnconfirmedGuests = () =>
+
   return (
     <div className="App">
       <header>
