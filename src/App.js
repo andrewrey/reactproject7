@@ -16,10 +16,6 @@ const App = () => {
       name: "Andrew",
       isConfirmed: true,
     },
-    {
-      name: "Max",
-      isConfirmed: false,
-    },
   ]);
 
   const getTotalInvited = () => {
