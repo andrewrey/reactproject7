@@ -39,7 +39,6 @@ const App = () => {
 
   // getAttendingGuests = () =>
   // getUnconfirmedGuests = () =>
-  console.log(guests);
   return (
     <div className="App">
       <header>
@@ -75,7 +74,7 @@ const App = () => {
             </tr>
           </tbody>
         </table>
-        <GuestList guests={guests} confirmed={toggleConfirmAt} />
+        <GuestList guests={guests} toggleConfirmAt={toggleConfirmAt} />
       </div>
     </div>
   );

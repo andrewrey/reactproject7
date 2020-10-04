@@ -2,16 +2,15 @@ import React from "react";
 import PropTypes from "prop-types";
 import Guest from "./Guest";
 
-const GuestList = ({ guests, confirmed }) => (
+const GuestList = ({ guests, toggleConfirmAt }) => (
   <ul>
     {guests.map((person, index) => {
       return (
         <Guest
           key={index}
           name={person.name}
-          toggleConfirm={confirmed}
+          handleConfirm={() => toggleConfirmAt(index)}
           isConfirmed={person.isConfirmed}
-          index={index}
         />
       );
     })}
@@ -20,6 +19,7 @@ const GuestList = ({ guests, confirmed }) => (
 
 GuestList.propTypes = {
   guests: PropTypes.array.isRequired,
+  toggleConfirmAt: PropTypes.func.isRequired,
 };
 
 export default GuestList;
