@@ -22,9 +22,24 @@ const App = () => {
     return guests.length;
   };
 
+  const toggleConfirmAt = (indexToChange) => {
+    setGuests(
+      guests.map((guest, index) => {
+        if (indexToChange === index) {
+          return {
+            ...guest,
+            isConfirmed: !guest.isConfirmed,
+          };
+        } else {
+          return { ...guest };
+        }
+      })
+    );
+  };
+
   // getAttendingGuests = () =>
   // getUnconfirmedGuests = () =>
-
+  console.log(guests);
   return (
     <div className="App">
       <header>
@@ -60,7 +75,7 @@ const App = () => {
             </tr>
           </tbody>
         </table>
-        <GuestList guests={guests} />
+        <GuestList guests={guests} confirmed={toggleConfirmAt} />
       </div>
     </div>
   );
