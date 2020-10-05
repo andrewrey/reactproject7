@@ -3,6 +3,7 @@ import "./App.css";
 import GuestList from "./GuestList";
 
 const App = () => {
+  const [isFiltered, setFiltered] = useState(false);
   const [guests, setGuests] = useState([
     {
       name: "Paul",
@@ -20,6 +21,10 @@ const App = () => {
       isEditing: false,
     },
   ]);
+
+  const toggleFilter = () => {
+    setFiltered(!isFiltered);
+  };
 
   const setNameAt = (name, indexToChange) => {
     setGuests(
@@ -80,7 +85,7 @@ const App = () => {
         <div>
           <h2>Invitees</h2>
           <label>
-            <input type="checkbox" /> Hide those who haven't responded
+            <input type="checkbox" onChange={toggleFilter} checked={isFiltered} /> Hide those who haven't responded
           </label>
         </div>
         <table className="counter">
@@ -99,12 +104,7 @@ const App = () => {
             </tr>
           </tbody>
         </table>
-        <GuestList
-          guests={guests}
-          toggleConfirmAt={toggleConfirmAt}
-          toggleEditingAt={toggleEditingAt}
-          setNameAt={setNameAt}
-        />
+        <GuestList guests={guests} toggleConfirmAt={toggleConfirmAt} toggleEditingAt={toggleEditingAt} setNameAt={setNameAt} />
       </div>
     </div>
   );
