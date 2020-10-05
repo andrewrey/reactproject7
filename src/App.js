@@ -21,6 +21,21 @@ const App = () => {
     },
   ]);
 
+  const setNameAt = (name, indexToChange) => {
+    setGuests(
+      guests.map((per, index) => {
+        if (indexToChange === index) {
+          return {
+            ...per,
+            name,
+          };
+        } else {
+          return { ...per };
+        }
+      })
+    );
+  };
+
   const getTotalInvited = () => {
     return guests.length;
   };
@@ -88,6 +103,7 @@ const App = () => {
           guests={guests}
           toggleConfirmAt={toggleConfirmAt}
           toggleEditingAt={toggleEditingAt}
+          setNameAt={setNameAt}
         />
       </div>
     </div>

@@ -8,15 +8,21 @@ const Guest = ({
   handleConfirm,
   toggleEditingAt,
   isEditing,
+  setName,
 }) => {
   return (
     <li>
-      <GuestName isEditing={isEditing}>{name}</GuestName>
+      <GuestName
+        isEditing={isEditing}
+        handleNameEdits={(e) => setName(e.target.value)}
+      >
+        {name}
+      </GuestName>
       <label>
         <input type="checkbox" checked={isConfirmed} onClick={handleConfirm} />{" "}
         Confirmed
       </label>
-      <button onClick={toggleEditingAt}>edit</button>
+      <button onClick={toggleEditingAt}>{isEditing ? "Save" : "Edit"}</button>
       <button>remove</button>
     </li>
   );
@@ -28,6 +34,7 @@ Guest.propTypes = {
   handleConfirm: PropTypes.func.isRequired,
   toggleEditingAt: PropTypes.func.isRequired,
   isEditing: PropTypes.bool.isRequired,
+  setName: PropTypes.func.isRequired,
 };
 
 export default Guest;
