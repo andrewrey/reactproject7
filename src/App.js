@@ -104,7 +104,7 @@ const App = () => {
             </tr>
           </tbody>
         </table>
-        <GuestList guests={guests} toggleConfirmAt={toggleConfirmAt} toggleEditingAt={toggleEditingAt} setNameAt={setNameAt} />
+        <GuestList guests={guests} toggleConfirmAt={toggleConfirmAt} toggleEditingAt={toggleEditingAt} setNameAt={setNameAt} isFiltered={isFiltered} />
       </div>
     </div>
   );
