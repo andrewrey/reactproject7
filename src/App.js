@@ -7,14 +7,17 @@ const App = () => {
     {
       name: "Paul",
       isConfirmed: false,
+      isEditing: false,
     },
     {
       name: "Mike",
       isConfirmed: true,
+      isEditing: false,
     },
     {
       name: "Andrew",
       isConfirmed: true,
+      isEditing: false,
     },
   ]);
 
@@ -22,19 +25,26 @@ const App = () => {
     return guests.length;
   };
 
-  const toggleConfirmAt = (indexToChange) => {
+  const togglePropertyAt = (indexToChange, property) => {
     setGuests(
       guests.map((guest, index) => {
         if (indexToChange === index) {
           return {
             ...guest,
-            isConfirmed: !guest.isConfirmed,
+            [property]: !guest[property],
           };
         } else {
           return { ...guest };
         }
       })
     );
+  };
+
+  const toggleConfirmAt = (indexToChange) => {
+    togglePropertyAt(indexToChange, "isConfirmed");
+  };
+  const toggleEditingAt = (indexToChange) => {
+    togglePropertyAt(indexToChange, "isEditing");
   };
 
   // getAttendingGuests = () =>
@@ -74,7 +84,11 @@ const App = () => {
             </tr>
           </tbody>
         </table>
-        <GuestList guests={guests} toggleConfirmAt={toggleConfirmAt} />
+        <GuestList
+          guests={guests}
+          toggleConfirmAt={toggleConfirmAt}
+          toggleEditingAt={toggleEditingAt}
+        />
       </div>
     </div>
   );

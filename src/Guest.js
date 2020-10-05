@@ -1,15 +1,21 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const Guest = ({ name, isConfirmed, handleConfirm }) => {
+const Guest = ({
+  name,
+  isConfirmed,
+  handleConfirm,
+  toggleEditingAt,
+  isEditing,
+}) => {
   return (
     <li>
-      <span>{name}</span>
+      {isEditing ? <input type="text" /> : <span>{name}</span>}
       <label>
         <input type="checkbox" checked={isConfirmed} onClick={handleConfirm} />{" "}
         Confirmed
       </label>
-      <button>edit</button>
+      <button onClick={toggleEditingAt}>edit</button>
       <button>remove</button>
     </li>
   );
