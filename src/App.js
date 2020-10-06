@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./App.css";
 import GuestList from "./GuestList";
+import Counter from "./Counter";
 
 const App = () => {
   const [newGuest, setNewGuest] = useState("");
@@ -58,6 +59,12 @@ const App = () => {
     return guests.length;
   };
 
+  const getConfirmed = () => {
+    return guests.reduce((acc, guest) => {
+      return guest.isConfirmed ? acc + 1 : acc;
+    }, 0);
+  };
+
   const togglePropertyAt = (indexToChange, property) => {
     setGuests(
       guests.map((guest, index) => {
@@ -80,8 +87,10 @@ const App = () => {
     togglePropertyAt(indexToChange, "isEditing");
   };
 
-  // getAttendingGuests = () =>
-  // getUnconfirmedGuests = () =>
+  let total = getTotalInvited();
+  let confirmed = getConfirmed();
+  let unconfirmed = total - confirmed;
+
   return (
     <div className="App">
       <header>
@@ -107,22 +116,7 @@ const App = () => {
             <input type="checkbox" onChange={toggleFilter} checked={isFiltered} /> Hide those who haven't responded
           </label>
         </div>
-        <table className="counter">
-          <tbody>
-            <tr>
-              <td>Attending:</td>
-              <td>2</td>
-            </tr>
-            <tr>
-              <td>Unconfirmed:</td>
-              <td>1</td>
-            </tr>
-            <tr>
-              <td>Total:</td>
-              <td>3</td>
-            </tr>
-          </tbody>
-        </table>
+        <Counter total={total} confirmed={confirmed} unconfirmed={unconfirmed} />
         <GuestList guests={guests} toggleConfirmAt={toggleConfirmAt} toggleEditingAt={toggleEditingAt} setNameAt={setNameAt} isFiltered={isFiltered} removeName={removeName} pendingGuest={newGuest} />
       </div>
     </div>
