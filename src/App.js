@@ -3,6 +3,7 @@ import "./App.css";
 import GuestList from "./GuestList";
 
 const App = () => {
+  const [newGuest, setNewGuest] = useState("");
   const [isFiltered, setFiltered] = useState(false);
   const [guests, setGuests] = useState([
     {
@@ -41,6 +42,14 @@ const App = () => {
     );
   };
 
+  const addGuest = (name) => {
+    setGuests([{ name, isConfirmed: false, isEditing: false }, ...guests]);
+  };
+
+  const handleNameInput = (e) => {
+    setNewGuest(e.target.value);
+  };
+
   const getTotalInvited = () => {
     return guests.length;
   };
@@ -74,8 +83,14 @@ const App = () => {
       <header>
         <h1>RSVP</h1>
         <p>A Treehouse App</p>
-        <form>
-          <input type="text" value="Safia" placeholder="Invite Someone" />
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            addGuest(newGuest);
+            setNewGuest("");
+          }}
+        >
+          <input type="text" placeholder="Invite Someone" onChange={handleNameInput} value={newGuest} />
           <button type="submit" name="submit" value="submit">
             Submit
           </button>
