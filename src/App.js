@@ -27,6 +27,10 @@ const App = () => {
     setFiltered(!isFiltered);
   };
 
+  const removeName = (name) => {
+    setGuests(guests.filter((guest) => guest.name !== name));
+  };
+
   const setNameAt = (name, indexToChange) => {
     setGuests(
       guests.map((per, index) => {
@@ -119,7 +123,7 @@ const App = () => {
             </tr>
           </tbody>
         </table>
-        <GuestList guests={guests} toggleConfirmAt={toggleConfirmAt} toggleEditingAt={toggleEditingAt} setNameAt={setNameAt} isFiltered={isFiltered} />
+        <GuestList guests={guests} toggleConfirmAt={toggleConfirmAt} toggleEditingAt={toggleEditingAt} setNameAt={setNameAt} isFiltered={isFiltered} removeName={removeName} />
       </div>
     </div>
   );
