@@ -1,9 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Guest from "./Guest";
+import GuestTile from "./GuestTile";
 
-const GuestList = ({ guests, toggleConfirmAt, toggleEditingAt, setNameAt, isFiltered, removeName }) => (
+const GuestList = ({ guests, toggleConfirmAt, toggleEditingAt, setNameAt, isFiltered, removeName, pendingGuest }) => (
   <ul>
+    <GuestTile name={pendingGuest} />
     {guests
       .filter((person) => !isFiltered || person.isConfirmed)
       .map((person, index) => {
@@ -19,6 +21,7 @@ GuestList.propTypes = {
   setNameAt: PropTypes.func.isRequired,
   isFiltered: PropTypes.bool.isRequired,
   removeName: PropTypes.func.isRequired,
+  pendingGuest: PropTypes.string.isRequired,
 };
 
 export default GuestList;
