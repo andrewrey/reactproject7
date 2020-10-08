@@ -3,26 +3,18 @@ import "./App.css";
 import Header from "./Header";
 import MainContent from "./MainContent";
 
+let guestID = 0;
+
 const App = () => {
   const [newGuest, setNewGuest] = useState("");
   const [isFiltered, setFiltered] = useState(false);
-  const [guests, setGuests] = useState([
-    {
-      name: "Paul",
-      isConfirmed: false,
-      isEditing: false,
-    },
-    {
-      name: "Mike",
-      isConfirmed: true,
-      isEditing: false,
-    },
-    {
-      name: "Andrew",
-      isConfirmed: true,
-      isEditing: false,
-    },
-  ]);
+  const [guests, setGuests] = useState([]);
+
+  const createNewId = () => {
+    let id = guestID;
+    guestID += 1;
+    return id;
+  };
 
   const toggleFilter = () => {
     setFiltered(!isFiltered);
@@ -32,10 +24,10 @@ const App = () => {
     setGuests(guests.filter((guest) => guest.name !== name));
   };
 
-  const setNameAt = (name, indexToChange) => {
+  const setNameAt = (name, id) => {
     setGuests(
-      guests.map((per, index) => {
-        if (indexToChange === index) {
+      guests.map((per) => {
+        if (id === per.id) {
           return {
             ...per,
             name,
@@ -48,7 +40,8 @@ const App = () => {
   };
 
   const addGuest = (name) => {
-    setGuests([{ name, isConfirmed: false, isEditing: false }, ...guests]);
+    createNewId();
+    setGuests([{ name, isConfirmed: false, isEditing: false, id: guestID }, ...guests]);
   };
 
   const handleNameInput = (e) => {
@@ -65,10 +58,10 @@ const App = () => {
     }, 0);
   };
 
-  const togglePropertyAt = (indexToChange, property) => {
+  const togglePropertyAt = (id, property) => {
     setGuests(
-      guests.map((guest, index) => {
-        if (indexToChange === index) {
+      guests.map((guest) => {
+        if (id === guest.id) {
           return {
             ...guest,
             [property]: !guest[property],
@@ -80,11 +73,11 @@ const App = () => {
     );
   };
 
-  const toggleConfirmAt = (indexToChange) => {
-    togglePropertyAt(indexToChange, "isConfirmed");
+  const toggleConfirmAt = (id) => {
+    togglePropertyAt(id, "isConfirmed");
   };
-  const toggleEditingAt = (indexToChange) => {
-    togglePropertyAt(indexToChange, "isEditing");
+  const toggleEditingAt = (id) => {
+    togglePropertyAt(id, "isEditing");
   };
 
   let total = getTotalInvited();

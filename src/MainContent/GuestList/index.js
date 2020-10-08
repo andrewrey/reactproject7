@@ -9,7 +9,7 @@ const GuestList = ({ guests, toggleConfirmAt, toggleEditingAt, setNameAt, isFilt
     {guests
       .filter((person) => !isFiltered || person.isConfirmed)
       .map((person, index) => {
-        return <Guest key={index} name={person.name} handleConfirm={() => toggleConfirmAt(index)} isConfirmed={person.isConfirmed} toggleEditingAt={() => toggleEditingAt(index)} isEditing={person.isEditing} setName={(text) => setNameAt(text, index)} removeName={removeName} />;
+        return <Guest key={index} name={person.name} handleConfirm={() => toggleConfirmAt(person.id)} isConfirmed={person.isConfirmed} toggleEditingAt={() => toggleEditingAt(person.id)} isEditing={person.isEditing} setName={(text) => setNameAt(text, person.id)} removeName={removeName} />;
       })}
   </ul>
 );
