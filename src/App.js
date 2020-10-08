@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import "./App.css";
+import Header from "./Header";
 import GuestList from "./GuestList";
 import Counter from "./Counter";
+import MainContent from "./MainContent";
 
 const App = () => {
   const [newGuest, setNewGuest] = useState("");
@@ -93,34 +95,21 @@ const App = () => {
 
   return (
     <div className="App">
-      <header>
-        <h1>RSVP</h1>
-        <p>A Treehouse App</p>
-        <form
-          onSubmit={(e) => {
-            e.preventDefault();
-            addGuest(newGuest);
-            setNewGuest("");
-          }}
-        >
-          <input type="text" placeholder="Invite Someone" onChange={handleNameInput} value={newGuest} />
-          <button type="submit" name="submit" value="submit">
-            Submit
-          </button>
-        </form>
-      </header>
-      <div className="main">
-        <div>
-          <h2>Invitees</h2>
-          <label>
-            <input type="checkbox" onChange={toggleFilter} checked={isFiltered} /> Hide those who haven't responded
-          </label>
-        </div>
-        <Counter total={total} confirmed={confirmed} unconfirmed={unconfirmed} />
-        <GuestList guests={guests} toggleConfirmAt={toggleConfirmAt} toggleEditingAt={toggleEditingAt} setNameAt={setNameAt} isFiltered={isFiltered} removeName={removeName} pendingGuest={newGuest} />
-      </div>
+      <Header />
+      <MainContent />
     </div>
   );
 };
+
+// create Inputs:
+//Header
+//  GuestInputForm
+//MainContent
+//  ConfirmedFilter
+//  Counter
+//  GuestList
+//    PendingGuest
+//    Guest
+//      GuestName
 
 export default App;
