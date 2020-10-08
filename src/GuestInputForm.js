@@ -18,4 +18,11 @@ const GuestInputForm = ({ handleNameInput, newGuest, addGuest, setNewGuest }) =>
   );
 };
 
+GuestInputForm.propTypes = {
+  handleNameInput: PropTypes.func.isRequired,
+  newGuest: PropTypes.string.isRequired,
+  addGuest: PropTypes.func.isRequired,
+  setNewGuest: PropTypes.func.isRequired,
+};
+
 export default GuestInputForm;

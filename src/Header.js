@@ -12,4 +12,11 @@ const Header = ({ handleNameInput, newGuest, addGuest, setNewGuest }) => {
   );
 };
 
+Header.propTypes = {
+  handleNameInput: PropTypes.func.isRequired,
+  newGuest: PropTypes.string.isRequired,
+  addGuest: PropTypes.func.isRequired,
+  setNewGuest: PropTypes.func.isRequired,
+};
+
 export default Header;

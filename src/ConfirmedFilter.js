@@ -12,4 +12,9 @@ const ConfirmedFilter = ({ toggleFilter, isFiltered }) => {
   );
 };
 
+ConfirmedFilter.propTypes = {
+  toggleFilter: PropTypes.func.isRequired,
+  isFiltered: PropTypes.bool.isRequired,
+};
+
 export default ConfirmedFilter;
