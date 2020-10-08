@@ -1,15 +1,13 @@
 import React from "react";
 import PropTypes from "prop-types";
+import Counter from "./Counter";
+import GuestList from "./GuestList";
+import ConfirmedFilter from "./ConfirmedFilter";
 
-const MainContent = () => {
+const MainContent = ({ toggleFilter, isFiltered, total, confirmed, unconfirmed, guests, toggleConfirmAt, toggleEditingAt, setNameAt, removeName, newGuest }) => {
   return (
     <div className="main">
-      <div>
-        <h2>Invitees</h2>
-        <label>
-          <input type="checkbox" onChange={toggleFilter} checked={isFiltered} /> Hide those who haven't responded
-        </label>
-      </div>
+      <ConfirmedFilter toggleFilter={toggleFilter} isFiltered={isFiltered} />
       <Counter total={total} confirmed={confirmed} unconfirmed={unconfirmed} />
       <GuestList guests={guests} toggleConfirmAt={toggleConfirmAt} toggleEditingAt={toggleEditingAt} setNameAt={setNameAt} isFiltered={isFiltered} removeName={removeName} pendingGuest={newGuest} />
     </div>

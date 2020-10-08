@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import "./App.css";
 import Header from "./Header";
-import GuestList from "./GuestList";
-import Counter from "./Counter";
 import MainContent from "./MainContent";
 
 const App = () => {
@@ -96,7 +94,7 @@ const App = () => {
   return (
     <div className="App">
       <Header handleNameInput={handleNameInput} newGuest={newGuest} addGuest={addGuest} setNewGuest={setNewGuest} />
-      <MainContent />
+      <MainContent toggleFilter={toggleFilter} isFiltered={isFiltered} total={total} confirmed={confirmed} unconfirmed={unconfirmed} guests={guests} toggleConfirmAt={toggleConfirmAt} toggleEditingAt={toggleEditingAt} setNameAt={setNameAt} removeName={removeName} newGuest={newGuest} />
     </div>
   );
 };
