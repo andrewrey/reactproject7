@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const GuestInputForm = () => {
+const GuestInputForm = ({ handleNameInput, newGuest, addGuest, setNewGuest }) => {
   return (
     <form
       onSubmit={(e) => {

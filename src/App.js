@@ -95,7 +95,7 @@ const App = () => {
 
   return (
     <div className="App">
-      <Header />
+      <Header handleNameInput={handleNameInput} newGuest={newGuest} addGuest={addGuest} setNewGuest={setNewGuest} />
       <MainContent />
     </div>
   );
